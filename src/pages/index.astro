@@ -1,0 +1,189 @@
+---
+// Fumadorex — Landing Page Principal
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Fumadorex — Deja de Fumar con el Método que Funciona</title>
+    <meta name="description" content="Método psicológico para dejar de fumar con 96% de efectividad. Sin parches, sin medicamentos, sin hipnosis. Basado en Humanismo y Conductismo." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: 'Inter', sans-serif; color: #1a1a1a; background: #fff; }
+      
+      /* HERO */
+      .hero {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        color: white;
+        padding: 80px 24px;
+        text-align: center;
+      }
+      .hero .badge {
+        display: inline-block;
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.3);
+        padding: 6px 16px;
+        border-radius: 999px;
+        font-size: 13px;
+        margin-bottom: 24px;
+        letter-spacing: 0.05em;
+      }
+      .hero h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 900;
+        line-height: 1.15;
+        max-width: 760px;
+        margin: 0 auto 20px;
+      }
+      .hero h1 span { color: #f59e0b; }
+      .hero p {
+        font-size: 1.1rem;
+        opacity: 0.85;
+        max-width: 560px;
+        margin: 0 auto 36px;
+        line-height: 1.6;
+      }
+      .btn-primary {
+        display: inline-block;
+        background: #f59e0b;
+        color: #1a1a1a;
+        font-weight: 800;
+        font-size: 1rem;
+        padding: 16px 36px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: transform 0.2s;
+      }
+      .btn-primary:hover { transform: scale(1.04); }
+
+      /* STATS */
+      .stats {
+        background: #f8f8f8;
+        padding: 48px 24px;
+        display: flex;
+        justify-content: center;
+        gap: 48px;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+      .stat-num { font-size: 2.5rem; font-weight: 900; color: #0f3460; }
+      .stat-label { font-size: 0.9rem; color: #666; margin-top: 4px; }
+
+      /* SECTION */
+      section { padding: 72px 24px; max-width: 960px; margin: 0 auto; }
+      h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; margin-bottom: 16px; }
+      h2 span { color: #0f3460; }
+
+      /* CARDS */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 24px;
+        margin-top: 40px;
+      }
+      .card {
+        background: #f8f8f8;
+        border-radius: 12px;
+        padding: 28px 24px;
+        border-left: 4px solid #f59e0b;
+      }
+      .card .icon { font-size: 2rem; margin-bottom: 12px; }
+      .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+      .card p { font-size: 0.9rem; color: #555; line-height: 1.6; }
+
+      /* CTA FINAL */
+      .cta-section {
+        background: linear-gradient(135deg, #0f3460, #1a1a2e);
+        color: white;
+        text-align: center;
+        padding: 80px 24px;
+      }
+      .cta-section h2 { color: white; margin-bottom: 16px; }
+      .cta-section p { opacity: 0.85; max-width: 500px; margin: 0 auto 32px; line-height: 1.6; }
+
+      /* FOOTER */
+      footer {
+        background: #111;
+        color: #888;
+        text-align: center;
+        padding: 24px;
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="badge">🚭 Método Psicológico con 96% de Efectividad</div>
+      <h1>Deja de fumar de una vez.<br /><span>Sin parches. Sin medicamentos.</span></h1>
+      <p>Fumadorex es el método basado en psicología que transforma tu relación con el cigarro desde la raíz — no solo los síntomas.</p>
+      <a href="https://wa.me/521XXXXXXXXXX?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Fumadorex" class="btn-primary">Quiero dejar de fumar →</a>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+      <div>
+        <div class="stat-num">96%</div>
+        <div class="stat-label">Efectividad comprobada</div>
+      </div>
+      <div>
+        <div class="stat-num">+500</div>
+        <div class="stat-label">Pacientes que lo lograron</div>
+      </div>
+      <div>
+        <div class="stat-num">0</div>
+        <div class="stat-label">Parches o medicamentos</div>
+      </div>
+    </div>
+
+    <!-- POR QUÉ FUNCIONA -->
+    <section>
+      <h2>¿Por qué <span>Fumadorex funciona</span> cuando todo lo demás falló?</h2>
+      <p style="color:#555; line-height:1.7; max-width:640px;">
+        La mayoría de métodos atacan solo el cuerpo. Fumadorex trabaja en tu mente — donde realmente vive la adicción. 
+        Combinamos Humanismo y Conductismo para reprogramar el comportamiento desde la raíz.
+      </p>
+      <div class="cards">
+        <div class="card">
+          <div class="icon">🧠</div>
+          <h3>Psicología aplicada</h3>
+          <p>No es fuerza de voluntad. Es ciencia. Trabajamos las causas emocionales que mantienen el hábito.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🎯</div>
+          <h3>Método personalizado</h3>
+          <p>Cada persona es diferente. Tu plan es único según tu historia con el cigarro.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔄</div>
+          <h3>Sin síndrome de abstinencia</h3>
+          <p>La mayoría lo deja sin los síntomas clásicos. El método cambia el deseo, no solo el hábito.</p>
+        </div>
+        <div class="card">
+          <div class="icon">✅</div>
+          <h3>Resultados probados</h3>
+          <p>96% de efectividad en más de 500 pacientes en Guadalajara y todo México.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <div class="cta-section">
+      <h2>¿Listo para dar el primer paso?</h2>
+      <p>Habla con nuestro equipo hoy. Una conversación puede cambiar el resto de tu vida.</p>
+      <a href="https://wa.me/521XXXXXXXXXX?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Fumadorex" class="btn-primary">Hablar con un especialista →</a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2026 Fumadorex · Guadalajara, México · fumadorex.com.mx</p>
+    </footer>
+
+  </body>
+</html>
