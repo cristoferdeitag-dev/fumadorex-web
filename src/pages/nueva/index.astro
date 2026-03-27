@@ -1,0 +1,656 @@
+---
+// Fumadorex — Clon fiel del sitio original
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/fumadorex.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Deja de fumar sin fuerza de voluntad | Fumadorex</title>
+    <meta name="description" content="Fumadorex: método psicológico con 96% de efectividad para dejar de fumar. Sin parches, sin medicamentos. Humanismo y Conductismo. Desde $6,999 MXN." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+      :root {
+        --cyan: #00BCD4;
+        --cyan-dark: #0097A7;
+        --azul: #1565C0;
+        --texto: #333;
+        --gris: #f5f5f5;
+        --gris-texto: #666;
+        --blanco: #ffffff;
+      }
+      body { font-family: 'Poppins', sans-serif; color: var(--texto); background: #fff; }
+      a { text-decoration: none; color: inherit; }
+
+      /* ========== NAV ========== */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: white;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        padding: 12px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .nav-logo img { height: 48px; width: auto; }
+      .nav-logo span {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--cyan-dark);
+        letter-spacing: -0.5px;
+      }
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        list-style: none;
+      }
+      .nav-links a {
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: #444;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover { color: var(--cyan-dark); }
+      .nav-btn {
+        background: var(--cyan);
+        color: white !important;
+        padding: 10px 24px;
+        border-radius: 25px;
+        font-weight: 600 !important;
+        font-size: 0.85rem !important;
+        transition: background 0.2s, transform 0.2s !important;
+      }
+      .nav-btn:hover { background: var(--cyan-dark) !important; transform: scale(1.03); }
+
+      /* ========== HERO ========== */
+      .hero {
+        background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 40%, #e3f2fd 100%);
+        padding: 80px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 60px;
+        flex-wrap: wrap;
+        min-height: 520px;
+      }
+      .hero-text { max-width: 540px; }
+      .hero-badge {
+        display: inline-block;
+        background: var(--cyan);
+        color: white;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 5px 14px;
+        border-radius: 999px;
+        margin-bottom: 20px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+      .hero-text h1 {
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 800;
+        line-height: 1.2;
+        color: #1a1a1a;
+        margin-bottom: 18px;
+      }
+      .hero-text h1 span { color: var(--cyan-dark); }
+      .hero-text p {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.7;
+        margin-bottom: 32px;
+        max-width: 480px;
+      }
+      .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+      .btn-primary {
+        background: var(--cyan);
+        color: white;
+        font-weight: 700;
+        font-size: 0.95rem;
+        padding: 14px 32px;
+        border-radius: 30px;
+        box-shadow: 0 4px 16px rgba(0,188,212,0.4);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,188,212,0.5); }
+      .btn-secondary {
+        background: white;
+        color: var(--cyan-dark);
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 14px 32px;
+        border-radius: 30px;
+        border: 2px solid var(--cyan);
+        transition: background 0.2s;
+      }
+      .btn-secondary:hover { background: #e0f7fa; }
+      .hero-img { max-width: 420px; width: 100%; }
+      .hero-img img { width: 100%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+
+      /* ========== STATS ========== */
+      .stats {
+        background: var(--cyan-dark);
+        padding: 40px;
+        display: flex;
+        justify-content: center;
+        gap: 64px;
+        flex-wrap: wrap;
+        text-align: center;
+      }
+      .stat-num { font-size: 2.6rem; font-weight: 800; color: white; line-height: 1; }
+      .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.8); margin-top: 4px; }
+
+      /* ========== SECCIONES ========== */
+      .section { padding: 80px 40px; }
+      .section-inner { max-width: 1000px; margin: 0 auto; }
+      .section-tag {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--cyan-dark);
+        margin-bottom: 10px;
+      }
+      h2 { font-size: clamp(1.6rem, 2.8vw, 2.2rem); font-weight: 700; line-height: 1.25; color: #1a1a1a; }
+      h2 span { color: var(--cyan-dark); }
+      .section-lead { color: var(--gris-texto); line-height: 1.75; max-width: 620px; margin-top: 12px; font-size: 0.95rem; }
+
+      /* ========== METODOLOGÍA ========== */
+      .metodo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-top: 48px;
+      }
+      .metodo-card {
+        background: white;
+        border-radius: 16px;
+        padding: 32px 26px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+        border-top: 3px solid var(--cyan);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .metodo-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+      .metodo-icon { font-size: 2.2rem; margin-bottom: 16px; }
+      .metodo-card h3 { font-size: 1rem; font-weight: 700; color: #1a1a1a; margin-bottom: 10px; }
+      .metodo-card p { font-size: 0.88rem; color: var(--gris-texto); line-height: 1.65; }
+
+      /* ========== TESTIMONIOS ========== */
+      .bg-gris { background: #f8fafb; }
+      .testimonios-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        margin-top: 48px;
+      }
+      .testimonio {
+        background: white;
+        border-radius: 16px;
+        padding: 28px 24px;
+        box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+        position: relative;
+      }
+      .testimonio::before {
+        content: '"';
+        font-size: 5rem;
+        color: var(--cyan);
+        opacity: 0.15;
+        position: absolute;
+        top: -10px;
+        left: 16px;
+        line-height: 1;
+        font-family: Georgia, serif;
+      }
+      .testimonio-stars { color: #FFC107; font-size: 0.9rem; margin-bottom: 12px; }
+      .testimonio p { font-size: 0.88rem; color: #555; line-height: 1.7; font-style: italic; position: relative; }
+      .testimonio-autor { margin-top: 16px; display: flex; align-items: center; gap: 10px; }
+      .testimonio-avatar {
+        width: 40px;
+        height: 40px;
+        background: var(--cyan);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+      .testimonio-nombre { font-weight: 600; font-size: 0.88rem; color: #1a1a1a; }
+      .testimonio-detalle { font-size: 0.78rem; color: #999; }
+
+      /* ========== PRECIOS ========== */
+      .precios-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+        margin-top: 48px;
+        align-items: start;
+      }
+      .precio-card {
+        border: 2px solid #e8e8e8;
+        border-radius: 20px;
+        padding: 40px 28px;
+        text-align: center;
+        position: relative;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .precio-card:hover { transform: translateY(-4px); }
+      .precio-card.destacado {
+        border-color: var(--cyan);
+        box-shadow: 0 8px 40px rgba(0,188,212,0.18);
+      }
+      .precio-badge-top {
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--cyan);
+        color: white;
+        font-weight: 700;
+        font-size: 0.75rem;
+        padding: 5px 18px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+      .precio-fecha { font-size: 0.78rem; color: #999; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+      .precio-num { font-size: 2.6rem; font-weight: 800; color: #1a1a1a; line-height: 1; }
+      .precio-moneda { font-size: 1.2rem; font-weight: 600; vertical-align: super; color: var(--cyan-dark); }
+      .precio-msi { font-size: 0.78rem; color: #999; margin: 6px 0 24px; }
+      .precio-lista { list-style: none; text-align: left; margin-bottom: 28px; }
+      .precio-lista li { font-size: 0.87rem; color: #555; padding: 8px 0; border-bottom: 1px solid #f0f0f0; display: flex; gap: 8px; align-items: center; }
+      .precio-lista li::before { content: "✓"; color: var(--cyan); font-weight: 700; flex-shrink: 0; }
+      .btn-precio {
+        display: block;
+        background: var(--cyan);
+        color: white;
+        font-weight: 700;
+        font-size: 0.9rem;
+        padding: 14px;
+        border-radius: 30px;
+        text-align: center;
+        transition: background 0.2s, transform 0.2s;
+      }
+      .btn-precio:hover { background: var(--cyan-dark); transform: scale(1.02); }
+
+      /* ========== FAQ ========== */
+      .faq-lista { margin-top: 40px; max-width: 720px; }
+      .faq-item { border-bottom: 1px solid #eee; padding: 20px 0; }
+      .faq-item h3 { font-size: 0.95rem; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; }
+      .faq-item p { font-size: 0.88rem; color: var(--gris-texto); line-height: 1.7; }
+
+      /* ========== HISTORIA TIMELINE ========== */
+      .historia-grid {
+        margin-top: 48px;
+        border-left: 3px solid var(--cyan);
+        padding-left: 32px;
+      }
+      .historia-item { padding-bottom: 32px; position: relative; }
+      .historia-item::before {
+        content: '';
+        position: absolute;
+        left: -41px;
+        top: 4px;
+        width: 16px;
+        height: 16px;
+        background: var(--cyan);
+        border-radius: 50%;
+        border: 3px solid white;
+        box-shadow: 0 0 0 2px var(--cyan);
+      }
+      .historia-year { font-size: 1.2rem; font-weight: 800; color: var(--cyan-dark); margin-bottom: 6px; }
+      .historia-item p { font-size: 0.88rem; color: var(--gris-texto); line-height: 1.7; max-width: 560px; }
+
+      /* ========== CTA FINAL ========== */
+      .cta-final {
+        background: linear-gradient(135deg, var(--cyan-dark) 0%, var(--azul) 100%);
+        color: white;
+        text-align: center;
+        padding: 88px 40px;
+      }
+      .cta-final h2 { color: white; margin-bottom: 16px; }
+      .cta-final p { opacity: 0.9; max-width: 520px; margin: 0 auto 36px; line-height: 1.7; font-size: 1rem; }
+      .btn-blanco {
+        display: inline-block;
+        background: white;
+        color: var(--cyan-dark);
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 16px 40px;
+        border-radius: 30px;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      }
+      .btn-blanco:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.25); }
+
+      /* ========== FOOTER ========== */
+      footer {
+        background: #1a1a2e;
+        color: #888;
+        text-align: center;
+        padding: 32px 24px;
+        font-size: 0.85rem;
+        line-height: 1.8;
+      }
+      footer a { color: #aaa; }
+      footer strong { color: #ccc; }
+
+      /* ========== WHATSAPP FLOTANTE ========== */
+      .wa-float {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        background: #25D366;
+        color: white;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+        z-index: 999;
+        transition: transform 0.2s;
+        text-decoration: none;
+      }
+      .wa-float:hover { transform: scale(1.1); }
+
+      @media (max-width: 768px) {
+        nav { padding: 12px 20px; }
+        .nav-links { display: none; }
+        .hero { padding: 60px 24px; }
+        .stats { gap: 32px; padding: 32px 24px; }
+        .section { padding: 60px 24px; }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- NAV -->
+    <nav>
+      <div class="nav-logo">
+        <img src="/fumadorex.png" alt="Fumadorex logo" />
+        <span>Fumadorex</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#metodologia">Metodología</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#precio">Precio</a></li>
+        <li><a href="#faq">Preguntas</a></li>
+        <li><a href="https://wa.me/523343717956?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Fumadorex" class="nav-btn">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero-text">
+        <div class="hero-badge">🚭 96% de efectividad comprobada</div>
+        <h1>¡Felicidades, estás dando<br /><span>un gran paso!</span></h1>
+        <p>Nuestro método está diseñado para ayudarte a dejar de fumar de forma eficaz y definitiva, preparándote tanto física como psicológicamente.</p>
+        <div class="hero-btns">
+          <a href="https://wa.me/523343717956?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Fumadorex" class="btn-primary">Quiero dejar de fumar →</a>
+          <a href="#metodologia" class="btn-secondary">Ver metodología</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="/Sin-titulo-1348-x-554-px.jpg" alt="Fumadorex método" />
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <div class="stats">
+      <div>
+        <div class="stat-num">96<span style="font-size:1.5rem">%</span></div>
+        <div class="stat-label">De eficacia</div>
+      </div>
+      <div>
+        <div class="stat-num">41</div>
+        <div class="stat-label">Años de experiencia</div>
+      </div>
+      <div>
+        <div class="stat-num">8</div>
+        <div class="stat-label">Semanas de acompañamiento</div>
+      </div>
+      <div>
+        <div class="stat-num">+500</div>
+        <div class="stat-label">Vidas transformadas</div>
+      </div>
+    </div>
+
+    <!-- METODOLOGÍA -->
+    <section class="section" id="metodologia">
+      <div class="section-inner">
+        <div class="section-tag">¿Cómo funciona?</div>
+        <h2>Metodología Fumadorex</h2>
+        <p class="section-lead">El curso se basa en la psicología y combina dos enfoques: humanismo y conductismo, preparándote tanto física como psicológicamente para dejar de fumar de forma efectiva.</p>
+        <div class="metodo-grid">
+          <div class="metodo-card">
+            <div class="metodo-icon">🧠</div>
+            <h3>Psicología aplicada</h3>
+            <p>Combinamos Humanismo y Conductismo para abordar el problema desde la raíz, sin sustitutos ni medicamentos.</p>
+          </div>
+          <div class="metodo-card">
+            <div class="metodo-icon">🗓️</div>
+            <h3>8 semanas de proceso</h3>
+            <p>Te acompañamos durante 8 semanas con sesiones grupales semanales y acceso a plataforma digital.</p>
+          </div>
+          <div class="metodo-card">
+            <div class="metodo-icon">🏠</div>
+            <h3>100% desde casa</h3>
+            <p>Gestiona tus horarios y avanza a tu propio ritmo desde la comodidad de tu hogar.</p>
+          </div>
+          <div class="metodo-card">
+            <div class="metodo-icon">🤝</div>
+            <h3>Asesor personal</h3>
+            <p>Contarás con un asesor capacitado y charlas grupales con otros participantes para apoyo mutuo.</p>
+          </div>
+          <div class="metodo-card">
+            <div class="metodo-icon">📦</div>
+            <h3>Kit de trabajo gratis</h3>
+            <p>Recibes en tu casa un kit con todas las herramientas necesarias para tu proceso, sin costo adicional.</p>
+          </div>
+          <div class="metodo-card">
+            <div class="metodo-icon">🔒</div>
+            <h3>100% seguro</h3>
+            <p>Sin parches, sin hipnosis, sin medicamentos. Solo psicología probada durante más de 41 años.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="section bg-gris" id="testimonios">
+      <div class="section-inner">
+        <div class="section-tag">Testimonios</div>
+        <h2>¿Qué opinan <span>nuestros clientes?</span></h2>
+        <div class="testimonios-grid">
+          <div class="testimonio">
+            <div class="testimonio-stars">★★★★★</div>
+            <p>"Tenía 22 años fumando, no creí que fuera posible vivir libre del cigarrillo. Gracias a Fumadorex, tengo una nueva vida. El cigarro ya no gobierna mi vida y me siento feliz y en paz."</p>
+            <div class="testimonio-autor">
+              <div class="testimonio-avatar">MN</div>
+              <div>
+                <div class="testimonio-nombre">Marisol Neri</div>
+                <div class="testimonio-detalle">22 años fumando</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonio">
+            <div class="testimonio-stars">★★★★★</div>
+            <p>"Estuve fumando durante 29 años, hasta 5 cajetillas por semana. Después de Fumadorex, logré dejar de fumar el 26 de abril de 2020. El apoyo psicológico fue de gran apoyo."</p>
+            <div class="testimonio-autor">
+              <div class="testimonio-avatar">VG</div>
+              <div>
+                <div class="testimonio-nombre">Verónica García</div>
+                <div class="testimonio-detalle">29 años fumando · Libre desde 2020</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonio">
+            <div class="testimonio-stars">★★★★★</div>
+            <p>"Después de probar Allen Carr, parches e hipnosis, nada me funcionó. Con este programa, desde hace 15 años no he vuelto a tocar un cigarro. Definitivamente el mejor método."</p>
+            <div class="testimonio-autor">
+              <div class="testimonio-avatar">FD</div>
+              <div>
+                <div class="testimonio-nombre">Fernando De Ita</div>
+                <div class="testimonio-detalle">15 años sin fumar</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonio">
+            <div class="testimonio-stars">★★★★★</div>
+            <p>"Hace 18 años tomé el curso y dejé de fumar. Tengo cero fuerza de voluntad y lo logré. No tengo ganas de volver a fumar."</p>
+            <div class="testimonio-autor">
+              <div class="testimonio-avatar">IA</div>
+              <div>
+                <div class="testimonio-nombre">Isabel Ajuria</div>
+                <div class="testimonio-detalle">18 años sin fumar</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonio">
+            <div class="testimonio-stars">★★★★★</div>
+            <p>"Llevo un mes sin fumar y sé que será para siempre. Tengo 46 años, empecé a los 15. Me siento más feliz y sé que soy más fuerte que el tabaco."</p>
+            <div class="testimonio-autor">
+              <div class="testimonio-avatar">IG</div>
+              <div>
+                <div class="testimonio-nombre">Israel García</div>
+                <div class="testimonio-detalle">Empezó a fumar a los 15 años</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRECIOS -->
+    <section class="section" id="precio">
+      <div class="section-inner">
+        <div class="section-tag">Aparta tu lugar</div>
+        <h2>Compra tu curso <span>en Amazon</span></h2>
+        <p class="section-lead">Hasta 12 meses sin intereses — solo $499 al mes.</p>
+        <div class="precios-grid">
+          <div class="precio-card">
+            <div class="precio-fecha">Inicio: 28 Feb 2026</div>
+            <div class="precio-num"><span class="precio-moneda">$</span>8,999</div>
+            <div class="precio-msi">o 12 MSI · $750/mes en Amazon</div>
+            <ul class="precio-lista">
+              <li>Planes de financiamiento</li>
+              <li>Acceso a plataforma digital</li>
+              <li>Kit de trabajo gratis</li>
+              <li>Asesoría personalizada</li>
+              <li>Charlas grupales</li>
+            </ul>
+            <a href="https://wa.me/523343717956?text=Hola%2C%20quiero%20apartar%20mi%20lugar%20en%20Fumadorex" class="btn-precio">Apartar lugar</a>
+          </div>
+          <div class="precio-card destacado">
+            <div class="precio-badge-top">🔥 Próximo inicio</div>
+            <div class="precio-fecha">Inicio: 24 Abr 2026</div>
+            <div class="precio-num"><span class="precio-moneda">$</span>6,999</div>
+            <div class="precio-msi">o 12 MSI · $583/mes en Amazon</div>
+            <ul class="precio-lista">
+              <li>Planes de financiamiento</li>
+              <li>Acceso a plataforma digital</li>
+              <li>Kit de trabajo gratis</li>
+              <li>Asesoría personalizada</li>
+              <li>Charlas grupales</li>
+            </ul>
+            <a href="https://wa.me/523343717956?text=Hola%2C%20quiero%20apartar%20mi%20lugar%20en%20Fumadorex" class="btn-precio">Apartar lugar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section bg-gris" id="faq">
+      <div class="section-inner">
+        <div class="section-tag">Preguntas frecuentes</div>
+        <h2>¿Tienes alguna <span>duda?</span></h2>
+        <div class="faq-lista">
+          <div class="faq-item">
+            <h3>¿Tienen planes de financiamiento?</h3>
+            <p>Sí. Compra en Amazon con hasta 12 meses sin intereses — solo $499 al mes.</p>
+          </div>
+          <div class="faq-item">
+            <h3>¿Qué porcentaje de efectividad tienen?</h3>
+            <p>96%. Con más de 41 años de experiencia, hemos colaborado con Colgate, Televisa, Banorte y la Secretaría de Salud del Gobierno de México.</p>
+          </div>
+          <div class="faq-item">
+            <h3>¿Cómo funciona el curso?</h3>
+            <p>8 semanas online con 1 sesión grupal por semana. Asesor personal, recursos digitales y acompañamiento constante.</p>
+          </div>
+          <div class="faq-item">
+            <h3>¿En qué consiste la garantía de flexibilidad?</h3>
+            <p>Si compraste y no puedes tomar las fechas programadas, puedes reagendar sin costo adicional.</p>
+          </div>
+          <div class="faq-item">
+            <h3>¿Qué es el kit de trabajo?</h3>
+            <p>Un paquete que recibes en casa gratis, con herramientas y recursos diseñados para apoyarte en tu proceso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HISTORIA -->
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-tag">Nuestra historia</div>
+        <h2>41 años <span>transformando vidas</span></h2>
+        <div class="historia-grid">
+          <div class="historia-item">
+            <div class="historia-year">1980</div>
+            <p>Rosa María, después de ser fumadora empedernida y probar diferentes métodos, decidió aplicar su experiencia en Psicología (Gestalt, Humanismo y Conductismo) para crear su propia metodología.</p>
+          </div>
+          <div class="historia-item">
+            <div class="historia-year">1983</div>
+            <p>Primer curso presencial con 14 participantes. Resultado: 100% de efectividad. El método estaba comprobado.</p>
+          </div>
+          <div class="historia-item">
+            <div class="historia-year">2000</div>
+            <p>Colaboraciones con Televisa, Colgate, Banorte y la Secretaría de Salud del Gobierno de México.</p>
+          </div>
+          <div class="historia-item">
+            <div class="historia-year">2020</div>
+            <p>Con el COVID-19, Fumadorex se digitaliza. Se lanza el primer curso 100% en línea con éxito total.</p>
+          </div>
+          <div class="historia-item">
+            <div class="historia-year">Hoy</div>
+            <p>Fumadorex continúa transformando vidas desde cualquier parte de México. Con cada curso, una vida libre del cigarro.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <div class="cta-final">
+      <div class="section-tag" style="color:rgba(255,255,255,0.7)">¿Listo para empezar?</div>
+      <h2>Da el primer paso hoy.</h2>
+      <p>Una conversación puede cambiar el resto de tu vida. Habla con nuestro equipo — sin compromiso.</p>
+      <a href="https://wa.me/523343717956?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Fumadorex" class="btn-blanco">Hablar con un especialista →</a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p><strong>Fumadorex</strong> · Método psicológico para dejar de fumar</p>
+      <p>Guadalajara, México · <a href="mailto:contacto@fumadorex.com.mx">contacto@fumadorex.com.mx</a></p>
+      <p style="margin-top:8px">© 2026 Fumadorex · Todos los derechos reservados</p>
+    </footer>
+
+    <!-- WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/523343717956?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Fumadorex" class="wa-float" title="WhatsApp">💬</a>
+
+  </body>
+</html>
