@@ -17,8 +17,15 @@ pnpm-debug.log*
 .env
 .env.production
 
+# sensitive files
+.private/
+wp-config.php
+
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+
+# logs
+humito-logs/

@@ -1,0 +1,34 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -p 65002 195.35.35.27 >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Deploy via rsync
+        run: |
+          rsync -avz --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.private' \
+            --exclude='wp-config.php' \
+            --exclude='humito-logs' \
+            --exclude='node_modules' \
+            --exclude='.env' \
+            --exclude='.env.production' \
+            -e "ssh -p 65002 -o StrictHostKeyChecking=no" \
+            ./ u781187371@195.35.35.27:/home/u781187371/domains/fumadorex.com.mx/public_html/

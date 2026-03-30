@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /wp-content/
+Disallow: /api/
+Disallow: /token.html
+
+Sitemap: https://fumadorex.com.mx/sitemap.xml
