@@ -180,11 +180,20 @@
         gap: 40px;
         flex-wrap: wrap;
       }
-      .confianza-logos span {
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: #bbb;
-        letter-spacing: 0.05em;
+      .confianza-logos img {
+        height: 44px;
+        width: auto;
+        max-width: 140px;
+        object-fit: contain;
+        opacity: 0.65;
+        transition: opacity 0.25s ease;
+      }
+      .confianza-logos img:hover {
+        opacity: 1;
+      }
+      @media (max-width: 640px) {
+        .confianza-logos { gap: 24px; }
+        .confianza-logos img { height: 32px; max-width: 100px; }
       }
 
       /* ========== SECCIONES ========== */
@@ -470,10 +479,12 @@
     <div class="confianza">
       <p>Empresas que han confiado en nuestro método:</p>
       <div class="confianza-logos">
-        <span>Televisa</span>
-        <span>Colgate</span>
-        <span>Banorte</span>
-        <span>Secretaría de Salud</span>
+        <img src="/logos/fortec.svg" alt="Fortec" loading="lazy" />
+        <img src="/logos/banorte.svg" alt="Banorte" loading="lazy" />
+        <img src="/logos/colgate.svg" alt="Colgate" loading="lazy" />
+        <img src="/logos/imss.svg" alt="IMSS" loading="lazy" />
+        <img src="/logos/televisa.svg" alt="Televisa" loading="lazy" />
+        <img src="/logos/secretaria-salud.svg" alt="Secretaría de Salud" loading="lazy" />
       </div>
     </div>
 
