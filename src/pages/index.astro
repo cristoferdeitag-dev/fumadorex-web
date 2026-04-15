@@ -138,6 +138,45 @@
       .hero-img { max-width: 420px; width: 100%; }
       .hero-img img { width: 100%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
 
+      /* ========== CONFIANZA ========== */
+      .confianza {
+        text-align: center;
+        padding: 32px 40px;
+        background: #f8fafb;
+        border-bottom: 1px solid #eee;
+      }
+      .confianza p {
+        font-size: 0.78rem;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+      .confianza-logos {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+      .confianza-logos img {
+        height: 44px;
+        width: auto;
+        max-width: 140px;
+        object-fit: contain;
+        opacity: 0.65;
+        transition: opacity 0.25s ease;
+      }
+      .confianza-logos img:hover {
+        opacity: 1;
+      }
+      @media (max-width: 640px) {
+        .confianza { padding: 24px 20px; }
+        .confianza-logos { gap: 24px; }
+        .confianza-logos img { height: 32px; max-width: 100px; }
+      }
+
       /* ========== STATS ========== */
       .stats {
         background: var(--cyan-dark);
@@ -409,6 +448,19 @@
         <img src="/Sin-titulo-1348-x-554-px.jpg" alt="Fumadorex método" />
       </div>
     </section>
+
+    <!-- CONFIANZA -->
+    <div class="confianza">
+      <p>Empresas que han confiado en nuestro método:</p>
+      <div class="confianza-logos">
+        <img src="/logos/fortec.svg" alt="Fortec" loading="lazy" />
+        <img src="/logos/banorte.svg" alt="Banorte" loading="lazy" />
+        <img src="/logos/colgate.svg" alt="Colgate" loading="lazy" />
+        <img src="/logos/imss.svg" alt="IMSS" loading="lazy" />
+        <img src="/logos/televisa.svg" alt="Televisa" loading="lazy" />
+        <img src="/logos/secretaria-salud.svg" alt="Secretaría de Salud" loading="lazy" />
+      </div>
+    </div>
 
     <!-- STATS -->
     <div class="stats">
