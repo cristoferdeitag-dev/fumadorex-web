@@ -132,6 +132,20 @@ tailwind.config = {
 </head>
 <body class="bg-background text-on-surface">
 
+<!-- Si ya vio el splash en esta sesión, lo oculta antes de renderizar -->
+<script>
+  (function() {
+    try {
+      if (sessionStorage.getItem('fumadorex_splash_seen')) {
+        document.documentElement.setAttribute('data-splash-seen', 'true');
+      }
+    } catch (e) {}
+  })();
+</script>
+<style>
+  [data-splash-seen] #splash { display: none !important; }
+</style>
+
 <!-- TELÓN / SPLASH SCREEN — circulo cubre toda la pantalla tipo cortina -->
 <div id="splash" onclick="openCurtain()" style="
   position: fixed;
@@ -174,6 +188,7 @@ tailwind.config = {
 <script>
   function openCurtain() {
     document.getElementById('splash').classList.add('curtain-open');
+    try { sessionStorage.setItem('fumadorex_splash_seen', '1'); } catch (e) {}
     setTimeout(() => {
       document.getElementById('splash').style.display = 'none';
     }, 900);
