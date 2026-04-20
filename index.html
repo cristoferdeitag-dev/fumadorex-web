@@ -3,6 +3,38 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<!-- Verificación de dominio Meta Business Manager -->
+<meta name="facebook-domain-verification" content="yyowfrdz5tgvp6ncx7w1ny9nxe3c3k" />
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2139217610166163');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2139217610166163&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- Track Lead event on WhatsApp clicks (event delegation) -->
+<script>
+document.addEventListener('click', function(ev) {
+  var a = ev.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
+  if (a && typeof fbq === 'function') {
+    try { fbq('track', 'Lead', { content_name: 'WhatsApp Click', source_url: location.pathname }); } catch(e) {}
+  }
+}, true);
+</script>
+
 <title>Deja de Fumar Sin Fuerza de Voluntad | Fumadorex — Método Psicológico</title>
 <meta name="description" content="Fumadorex: método psicológico con 95% de efectividad y 41 años de experiencia para dejar de fumar. Sin parches, sin medicamentos. 8 semanas, 100% en línea. Garantía de reembolso al 100%."/>
 <meta name="keywords" content="dejar de fumar, fumadorex, programa para dejar de fumar, dejar el cigarro, método psicológico, dejar de fumar sin fuerza de voluntad, curso para dejar de fumar, dejar de fumar en línea, método conductismo, humanismo"/>
@@ -129,37 +161,6 @@ tailwind.config = {
     border: 1px solid rgba(188, 200, 206, 0.15);
   }
 </style>
-
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2139217610166163');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2139217610166163&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-
-<!-- Track Lead event on WhatsApp clicks (delegation) -->
-<script>
-document.addEventListener('click', function(ev) {
-  var a = ev.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
-  if (a && typeof fbq === 'function') {
-    try { fbq('track', 'Lead', { content_name: 'WhatsApp Click', source_url: location.pathname }); } catch(e) {}
-  }
-}, true);
-</script>
-
-<!-- Verificación de dominio Meta Business Manager -->
-<meta name="facebook-domain-verification" content="yyowfrdz5tgvp6ncx7w1ny9nxe3c3k" />
 </head>
 <body class="bg-background text-on-surface">
 
