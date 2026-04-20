@@ -129,6 +129,36 @@ tailwind.config = {
     border: 1px solid rgba(188, 200, 206, 0.15);
   }
 </style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2139217610166163');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2139217610166163&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- Track Lead event on WhatsApp clicks (delegation) -->
+<script>
+document.addEventListener('click', function(ev) {
+  var a = ev.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
+  if (a && typeof fbq === 'function') {
+    try { fbq('track', 'Lead', { content_name: 'WhatsApp Click', source_url: location.pathname }); } catch(e) {}
+  }
+}, true);
+</script>
+
+<!-- Verificación de dominio Meta (pendiente): insertar aquí el meta tag cuando Daniel lo saque de Business Manager -->
 </head>
 <body class="bg-background text-on-surface">
 
