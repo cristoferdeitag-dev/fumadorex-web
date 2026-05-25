@@ -19,6 +19,17 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -p 65002 195.35.35.27 >> ~/.ssh/known_hosts 2>/dev/null
 
+      - name: Generate api/.env.php from secret
+        run: |
+          mkdir -p api
+          cat > api/.env.php <<EOF
+          <?php
+          return [
+              'STRIPE_SECRET' => '${{ secrets.STRIPE_SECRET_KEY }}',
+          ];
+          EOF
+          chmod 600 api/.env.php
+
       - name: Deploy via rsync
         run: |
           rsync -avz --delete \
