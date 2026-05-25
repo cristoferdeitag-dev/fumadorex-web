@@ -26,6 +26,8 @@ $input = json_decode(file_get_contents('php://input'), true);
 $email = isset($input['email']) ? trim($input['email']) : '';
 $name = isset($input['name']) ? trim($input['name']) : '';
 $phone = isset($input['phone']) ? trim($input['phone']) : '';
+$amount = isset($input['amount']) ? (int)$input['amount'] : 0;
+$promo = isset($input['promo']) ? trim($input['promo']) : 'standard';
 
 if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     http_response_code(400);
@@ -38,8 +40,14 @@ if (!$name || strlen($name) < 2) {
     exit;
 }
 
-// $6,999.00 MXN = 699900 centavos
-$amount = 699900;
+// Whitelist de montos válidos en centavos MXN (evita abuse del endpoint)
+// 350000 = $3,500 (Hot Sale) | 699900 = $6,999 (estándar) | 899900 = $8,999 (full)
+$allowed_amounts = [350000, 699900, 899900];
+if (!in_array($amount, $allowed_amounts, true)) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Monto inválido']);
+    exit;
+}
 
 $post_fields = [
     'amount' => $amount,
@@ -50,6 +58,7 @@ $post_fields = [
     'metadata[name]' => $name,
     'metadata[phone]' => $phone,
     'metadata[source]' => 'fumadorex.com.mx landing inline',
+    'metadata[promo]' => $promo,
     'metadata[curso_fecha]' => '2026-07-25',
     'automatic_payment_methods[enabled]' => 'true',
 ];

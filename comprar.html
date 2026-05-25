@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Comprar Programa Fumadorex — $6,999 MXN</title>
-<meta name="description" content="Reserva tu lugar en el programa Fumadorex. Método psicológico, 95% de efectividad, garantía de reembolso 100%."/>
+<title>Comprar Programa Fumadorex — $3,500 MXN · Hot Sale</title>
+<meta name="description" content="Reserva tu lugar en el programa Fumadorex con precio Hot Sale. Método psicológico, 95% de efectividad, garantía de reembolso 100%."/>
 <link rel="canonical" href="https://fumadorex.com.mx/comprar.html"/>
 <link rel="icon" href="https://fumadorex.com.mx/imgs/fumadorex.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script src="https://js.stripe.com/v3/"></script>
 <style>
   body { font-family: 'Inter', system-ui, sans-serif; }
   h1, h2, h3, .heading { font-family: 'Manrope', system-ui, sans-serif; }
@@ -32,7 +33,7 @@
 
   <!-- LEFT — value summary -->
   <section class="lg:col-span-3 order-2 lg:order-1">
-    <span class="inline-block bg-emerald-100 text-emerald-700 text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full">Programa completo · 8 semanas</span>
+    <span class="inline-block bg-gradient-to-r from-[#FF6A00] to-[#E53935] text-white text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full">🔥 Hot Sale · pago directo</span>
     <h1 class="heading text-3xl sm:text-4xl font-bold mt-4 leading-tight">Reserva tu lugar en Fumadorex.</h1>
     <p class="text-slate-600 mt-3 text-base sm:text-lg max-w-xl">
       Método psicológico (Gestalt + Humanismo + Conductismo). 41 años de trayectoria, 95% de efectividad, y <strong>garantía de reembolso al 100%</strong> si terminas el programa y sigues fumando.
@@ -48,8 +49,11 @@
     </ul>
 
     <div class="mt-8 p-5 bg-white rounded-xl border border-slate-200">
-      <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Pago de contado · una sola exhibición</div>
-      <div class="text-4xl font-bold text-slate-900 mt-1">$6,999 <span class="text-base font-medium text-slate-500">MXN</span></div>
+      <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">Precio Hot Sale · pago único</div>
+      <div class="flex items-baseline gap-3 mt-1">
+        <div class="text-lg font-medium text-slate-400 line-through">$8,999</div>
+        <div class="text-4xl font-bold text-[#E53935]">$3,500 <span class="text-base font-medium text-slate-500">MXN</span></div>
+      </div>
       <p class="text-sm text-slate-600 mt-2">Acceso inmediato al programa al confirmar el pago.</p>
     </div>
   </section>
@@ -60,7 +64,8 @@
       <h2 class="heading text-xl font-bold">Reservar mi lugar</h2>
       <p class="text-sm text-slate-500 mt-1 mb-5">Pago seguro vía Stripe. Recibirás tus credenciales por WhatsApp.</p>
 
-      <form id="checkout-form" class="space-y-4">
+      <!-- Step 1: Personal details -->
+      <form id="details-form" class="space-y-4">
         <label class="block">
           <span class="text-xs font-semibold text-slate-700 block mb-1.5">Nombre completo</span>
           <input id="name" name="name" type="text" required minlength="2"
@@ -80,66 +85,166 @@
             placeholder="55 1234 5678"/>
         </label>
 
-        <button id="submit-btn" type="submit"
-          class="w-full h-12 bg-emerald-600 text-white font-semibold rounded-md hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2 mt-2 disabled:opacity-50 disabled:cursor-not-allowed">
-          <span id="submit-label">Pagar $6,999 con Stripe</span>
+        <button id="details-submit" type="submit"
+          class="w-full h-12 bg-gradient-to-r from-[#FF6A00] to-[#E53935] text-white font-semibold rounded-md hover:opacity-95 transition-all flex items-center justify-center gap-2 mt-2 disabled:opacity-50 disabled:cursor-not-allowed">
+          <span id="details-submit-label">Continuar al pago</span>
           <span class="material-symbols-outlined text-base">arrow_forward</span>
         </button>
 
-        <p id="error-msg" class="text-sm text-red-600 hidden"></p>
+        <p id="details-error" class="text-sm text-red-600 hidden"></p>
 
         <p class="text-[11px] text-slate-500 text-center">Pago procesado por Stripe (PCI-DSS Nivel 1). Aceptamos tarjetas de crédito y débito.</p>
       </form>
+
+      <!-- Step 2: Stripe Payment Element (hidden until step 1 completes) -->
+      <form id="payment-form" class="hidden space-y-4">
+        <div class="border-b border-slate-200 pb-3 mb-1">
+          <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total a pagar</div>
+          <div class="text-2xl font-bold text-slate-900 mt-1">$3,500 <span class="text-sm font-medium text-slate-500">MXN</span></div>
+        </div>
+
+        <div id="payment-element"></div>
+
+        <button id="payment-submit" type="submit"
+          class="w-full h-12 bg-gradient-to-r from-[#FF6A00] to-[#E53935] text-white font-semibold rounded-md hover:opacity-95 transition-all flex items-center justify-center gap-2 mt-2 disabled:opacity-50 disabled:cursor-not-allowed">
+          <span id="payment-submit-label">Pagar $3,500 ahora</span>
+          <span class="material-symbols-outlined text-base">lock</span>
+        </button>
+
+        <p id="payment-error" class="text-sm text-red-600 hidden"></p>
+
+        <button id="payment-back" type="button" class="w-full text-xs text-slate-500 hover:text-slate-900">← Cambiar datos</button>
+      </form>
     </div>
 
-    <p class="text-center text-xs text-slate-500 mt-4">¿Dudas? Escríbenos por WhatsApp al <a href="https://wa.me/5215551234567" class="text-emerald-700 font-medium">+52 1 555 123 4567</a></p>
+    <p class="text-center text-xs text-slate-500 mt-4">¿Dudas? Escríbenos por WhatsApp al <a href="https://wa.me/523343737956" class="text-emerald-700 font-medium">+52 33 4373 7956</a></p>
   </section>
 </main>
 
 <script>
-  const API = "https://fumadorex-bot-production.up.railway.app";
-  const form = document.getElementById('checkout-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const submitLabel = document.getElementById('submit-label');
-  const errorEl = document.getElementById('error-msg');
+  // Stripe Fumadorex (publishable, safe to expose)
+  const STRIPE_PK = "pk_live_51NiU6JEBq5BfVWoRwrb1SoCm7WMKlLqGq9f8EHbfNGpabsqqE6JBsFhUl7erFUdSCb7e2RVGpAbYRrmkWVGL4FjV00MH4li7dI";
+  const PROMO_AMOUNT = 350000; // $3,500 MXN
+  const PROMO_LABEL = "hot_sale";
 
-  form.addEventListener('submit', async (e) => {
+  const stripe = Stripe(STRIPE_PK);
+  let elements = null;
+  let currentClientSecret = null;
+  let buyerDetails = null;
+
+  const detailsForm = document.getElementById('details-form');
+  const detailsSubmit = document.getElementById('details-submit');
+  const detailsLabel = document.getElementById('details-submit-label');
+  const detailsError = document.getElementById('details-error');
+
+  const paymentForm = document.getElementById('payment-form');
+  const paymentSubmit = document.getElementById('payment-submit');
+  const paymentLabel = document.getElementById('payment-submit-label');
+  const paymentError = document.getElementById('payment-error');
+  const paymentBack = document.getElementById('payment-back');
+
+  // Step 1 — collect details + request PaymentIntent
+  detailsForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    errorEl.classList.add('hidden');
-    submitBtn.disabled = true;
-    submitLabel.textContent = "Procesando…";
+    detailsError.classList.add('hidden');
+    detailsSubmit.disabled = true;
+    detailsLabel.textContent = "Preparando pago…";
 
-    const data = {
+    buyerDetails = {
       name: document.getElementById('name').value.trim(),
       email: document.getElementById('email').value.trim(),
-      whatsapp: document.getElementById('whatsapp').value.trim(),
+      phone: document.getElementById('whatsapp').value.trim(),
+      amount: PROMO_AMOUNT,
+      promo: PROMO_LABEL,
     };
 
     try {
-      const r = await fetch(API + "/api/checkout/session", {
+      const r = await fetch("/api/stripe-payment-intent.php", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify(buyerDetails),
       });
-      if (!r.ok) {
-        const j = await r.json().catch(() => ({}));
-        throw new Error(j.detail || j.error || ("HTTP " + r.status));
-      }
       const j = await r.json();
-      if (j.url) {
-        window.location.href = j.url;
-      } else {
-        throw new Error("No checkout URL returned");
+      if (!r.ok || !j.client_secret) {
+        throw new Error(j.error || ("HTTP " + r.status));
+      }
+      currentClientSecret = j.client_secret;
+
+      // Mount Stripe Elements with Payment Element
+      elements = stripe.elements({
+        clientSecret: currentClientSecret,
+        appearance: {
+          theme: 'stripe',
+          variables: {
+            colorPrimary: '#E53935',
+            borderRadius: '6px',
+            fontFamily: 'Inter, system-ui, sans-serif',
+          }
+        }
+      });
+      const paymentElement = elements.create('payment');
+      paymentElement.mount('#payment-element');
+
+      // Hide step 1, show step 2
+      detailsForm.classList.add('hidden');
+      paymentForm.classList.remove('hidden');
+
+      // Meta Pixel — track InitiateCheckout
+      if (typeof fbq === 'function') {
+        fbq('track', 'InitiateCheckout', { value: 3500, currency: 'MXN' });
       }
     } catch (err) {
-      errorEl.textContent = "No pudimos iniciar el pago: " + err.message + ". Intenta de nuevo o escríbenos por WhatsApp.";
-      errorEl.classList.remove('hidden');
-      submitBtn.disabled = false;
-      submitLabel.textContent = "Pagar $6,999 con Stripe";
+      detailsError.textContent = "No pudimos iniciar el pago: " + err.message + ". Intenta de nuevo o escríbenos por WhatsApp.";
+      detailsError.classList.remove('hidden');
+      detailsSubmit.disabled = false;
+      detailsLabel.textContent = "Continuar al pago";
     }
   });
 
-  // Meta Pixel — track InitiateCheckout when the form mounts
+  // Step 2 — confirm payment with Stripe Elements
+  paymentForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    paymentError.classList.add('hidden');
+    paymentSubmit.disabled = true;
+    paymentLabel.textContent = "Procesando pago…";
+
+    const { error } = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: window.location.origin + '/comprar/exito.html',
+        receipt_email: buyerDetails.email,
+        payment_method_data: {
+          billing_details: {
+            name: buyerDetails.name,
+            email: buyerDetails.email,
+            phone: buyerDetails.phone,
+          }
+        }
+      }
+    });
+
+    // Si llegamos aquí es porque hubo error o el pago requirió otro paso
+    if (error) {
+      paymentError.textContent = error.message || "El pago no se pudo procesar. Intenta de nuevo.";
+      paymentError.classList.remove('hidden');
+      paymentSubmit.disabled = false;
+      paymentLabel.textContent = "Pagar $3,500 ahora";
+    }
+  });
+
+  // Back button — return to step 1
+  paymentBack.addEventListener('click', () => {
+    paymentForm.classList.add('hidden');
+    detailsForm.classList.remove('hidden');
+    detailsSubmit.disabled = false;
+    detailsLabel.textContent = "Continuar al pago";
+    paymentError.classList.add('hidden');
+    document.getElementById('payment-element').innerHTML = '';
+    elements = null;
+    currentClientSecret = null;
+  });
+
+  // Meta Pixel — track ViewContent
   if (typeof fbq === 'function') { fbq('track', 'ViewContent', { content_name: 'comprar' }); }
 </script>
 
