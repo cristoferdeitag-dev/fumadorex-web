@@ -17,7 +17,9 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -p 65002 195.35.35.27 >> ~/.ssh/known_hosts 2>/dev/null
+          # ssh-keyscan a veces es bloqueado/rate-limited por Hostinger; no debe abortar el job
+          # (usamos StrictHostKeyChecking=no en el rsync de todos modos).
+          ssh-keyscan -p 65002 195.35.35.27 >> ~/.ssh/known_hosts 2>/dev/null || true
 
       - name: Generate api/.env.php from secret
         run: |
@@ -32,14 +34,22 @@ jobs:
 
       - name: Deploy via rsync
         run: |
-          rsync -avz --delete \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='.private' \
-            --exclude='wp-config.php' \
-            --exclude='humito-logs' \
-            --exclude='node_modules' \
-            --exclude='.env' \
-            --exclude='.env.production' \
-            -e "ssh -p 65002 -o StrictHostKeyChecking=no" \
-            ./ u781187371@195.35.35.27:/home/u781187371/domains/fumadorex.com.mx/public_html/
+          # Hostinger rate-limita SSH cuando hay varios deploys seguidos. Reintentar con backoff.
+          n=0
+          until [ $n -ge 4 ]; do
+            rsync -avz --delete \
+              --exclude='.git' \
+              --exclude='.github' \
+              --exclude='.private' \
+              --exclude='wp-config.php' \
+              --exclude='humito-logs' \
+              --exclude='node_modules' \
+              --exclude='.env' \
+              --exclude='.env.production' \
+              -e "ssh -p 65002 -o StrictHostKeyChecking=no -o ConnectTimeout=30" \
+              ./ u781187371@195.35.35.27:/home/u781187371/domains/fumadorex.com.mx/public_html/ && break
+            n=$((n+1))
+            echo "rsync falló (intento $n/4); reintentando en $((n*30))s…"
+            sleep $((n*30))
+          done
+          if [ $n -ge 4 ]; then echo "Deploy falló tras 4 intentos"; exit 1; fi
