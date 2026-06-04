@@ -57,7 +57,7 @@ document.addEventListener('click', function(ev) {
 {"@context":"https://schema.org","@type":"Organization","name":"Fumadorex","url":"https://fumadorex.com.mx","logo":"https://fumadorex.com.mx/imgs/fumadorex.png","description":"Método psicológico con 95% de efectividad para dejar de fumar. 41 años de experiencia.","contactPoint":{"@type":"ContactPoint","telephone":"+523343737956","contactType":"customer service","availableLanguage":"Spanish"},"sameAs":["https://www.facebook.com/share/177PnmNTMG/","https://www.instagram.com/fumadorex"]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Realmente funciona?","acceptedAnswer":{"@type":"Answer","text":"Sí. Nuestro método tiene una tasa de efectividad del 95%, respaldada por 41 años de investigación clínica."}},{"@type":"Question","name":"¿Necesito fuerza de voluntad?","acceptedAnswer":{"@type":"Answer","text":"No. Reprogramamos los patrones psicológicos que generan el deseo de fumar, de modo que dejarlo se siente natural."}},{"@type":"Question","name":"¿Tienen planes de financiamiento?","acceptedAnswer":{"@type":"Answer","text":"Sí. Puedes comprar en Amazon con hasta 12 meses sin intereses. Desde $583 al mes."}},{"@type":"Question","name":"¿Hay garantía?","acceptedAnswer":{"@type":"Answer","text":"Sí. Si terminas el curso completo y sigues fumando, te devolvemos el 100% de tu dinero."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Realmente funciona?","acceptedAnswer":{"@type":"Answer","text":"Sí. Nuestro método tiene una tasa de efectividad del 95%, respaldada por 41 años de investigación clínica."}},{"@type":"Question","name":"¿Necesito fuerza de voluntad?","acceptedAnswer":{"@type":"Answer","text":"No. Reprogramamos los patrones psicológicos que generan el deseo de fumar, de modo que dejarlo se siente natural."}},{"@type":"Question","name":"¿Tienen planes de financiamiento?","acceptedAnswer":{"@type":"Answer","text":"Sí. Puedes comprar en Amazon con hasta 15 meses sin intereses. Desde $467 al mes."}},{"@type":"Question","name":"¿Hay garantía?","acceptedAnswer":{"@type":"Answer","text":"Sí. Si terminas el curso completo y sigues fumando, te devolvemos el 100% de tu dinero."}}]}
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -699,7 +699,7 @@ tailwind.config = {
       <div class="text-center mb-16">
         <span class="text-primary-fixed-dim font-bold tracking-widest uppercase text-xs">¡Aparta tu lugar!</span>
         <h2 class="text-3xl md:text-4xl font-bold text-secondary mt-3">Compra tu curso en Amazon</h2>
-        <p class="text-on-surface-variant mt-4">Hasta 12 meses sin intereses. Grupos reducidos.</p>
+        <p class="text-on-surface-variant mt-4">Hasta 15 meses sin intereses. Grupos reducidos.</p>
       </div>
 
       <!-- Investment comparison -->
@@ -722,13 +722,13 @@ tailwind.config = {
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
 
-        <!-- Card 1: 25 mayo — FEATURED -->
-        <div class="bg-surface-container-lowest rounded-3xl overflow-hidden ambient-shadow relative border-2 border-primary-fixed-dim transform md:scale-105 z-10">
-          <div class="bg-primary-fixed-dim text-white text-center py-2 text-xs font-bold uppercase tracking-wider">¡Próximo curso!</div>
+        <!-- Card 1: 25 mayo — NO DISPONIBLE (fecha pasada) -->
+        <div class="bg-surface-container-lowest rounded-3xl overflow-hidden ambient-shadow relative opacity-60">
+          <div class="bg-surface-container-high text-on-surface-variant text-center py-2 text-xs font-bold uppercase tracking-wider">No disponible</div>
           <div class="p-8 text-center">
             <p class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider mb-3">25 Mayo 2026</p>
-            <p class="text-4xl font-extrabold text-secondary font-headline">$8,999</p>
-            <p class="text-xs text-on-surface-variant mt-1">o 12 MSI · $750/mes en Amazon</p>
+            <p class="text-4xl font-extrabold text-on-surface-variant font-headline line-through">$6,999</p>
+            <p class="text-xs text-on-surface-variant mt-1">Curso cerrado</p>
             <div class="mt-6 space-y-2 text-left">
               <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Planes de financiamiento</div>
               <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Acceso a plataforma digital</div>
@@ -737,9 +737,9 @@ tailwind.config = {
               <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Charlas grupales</div>
               <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Garantía de reembolso 100%</div>
             </div>
-            <a href="https://www.amazon.com.mx/dp/B0DF12DRBM" target="_blank" class="block w-full mt-8 py-3.5 bg-primary-fixed-dim text-white font-bold rounded-full text-center hover:bg-[#3BAEE0] active:scale-95 transition-all duration-200">
-              Comprar en Amazon
-            </a>
+            <span class="block w-full mt-8 py-3.5 bg-surface-container-high text-on-surface-variant font-bold rounded-full text-center cursor-not-allowed">
+              Cupo cerrado
+            </span>
           </div>
         </div>
 
@@ -748,8 +748,8 @@ tailwind.config = {
           <div class="bg-surface-container-high text-on-surface-variant text-center py-2 text-xs font-semibold uppercase tracking-wider">Disponible</div>
           <div class="p-8 text-center">
             <p class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider mb-3">25 Junio 2026</p>
-            <p class="text-4xl font-extrabold text-secondary font-headline">$8,999</p>
-            <p class="text-xs text-on-surface-variant mt-1">o 12 MSI · $750/mes en Amazon</p>
+            <p class="text-4xl font-extrabold text-secondary font-headline">$6,999</p>
+            <p class="text-xs text-on-surface-variant mt-1">o hasta 15 MSI · ~$467/mes en Amazon</p>
             <div class="mt-6 space-y-2 text-left">
               <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Planes de financiamiento</div>
               <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Acceso a plataforma digital</div>
@@ -769,7 +769,7 @@ tailwind.config = {
           <div class="bg-gradient-to-r from-[#FF6A00] to-[#E53935] text-white text-center py-2 text-xs font-bold uppercase tracking-wider">🔥 Mitad de Año · Mitad de Precio</div>
           <div class="p-8 text-center">
             <p class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider mb-3">Todo junio 2026</p>
-            <div class="mb-1"><span class="text-sm text-outline line-through">$8,999</span></div>
+            <div class="mb-1"><span class="text-sm text-outline line-through">$6,999</span></div>
             <p class="text-4xl font-extrabold text-[#E53935] font-headline">$3,500</p>
             <p class="text-xs text-on-surface-variant mt-1">Un solo pago directo en la página</p>
             <div class="mt-6 space-y-2 text-left">
@@ -934,7 +934,7 @@ tailwind.config = {
             <span class="material-symbols-outlined text-primary-fixed-dim transition-transform duration-300 group-open:rotate-180 flex-shrink-0">expand_more</span>
           </summary>
           <div class="px-6 pb-6">
-            <p class="text-on-surface-variant leading-relaxed">Sí. Puedes comprar en Amazon con hasta 12 meses sin intereses. Desde $583 al mes con el precio de $6,999.</p>
+            <p class="text-on-surface-variant leading-relaxed">Sí. Puedes comprar en Amazon con hasta 15 meses sin intereses. Desde $467 al mes con el precio de $6,999.</p>
           </div>
         </details>
 
