@@ -80,7 +80,8 @@
         </label>
         <label class="block">
           <span class="text-xs font-semibold text-slate-700 block mb-1.5">WhatsApp <span class="text-slate-400 font-normal">(con lada, ej. 5512345678)</span></span>
-          <input id="whatsapp" name="whatsapp" type="tel" required minlength="10"
+          <input id="whatsapp" name="whatsapp" type="tel" inputmode="numeric" required minlength="10" maxlength="15"
+            oninput="this.value=this.value.replace(/[^0-9 ]/g,'').slice(0,15)"
             class="w-full h-11 px-3 rounded-md border border-slate-300 focus:outline-none focus:ring-2 focus:ring-emerald-500/40 focus:border-emerald-600 text-sm"
             placeholder="55 1234 5678"/>
         </label>
@@ -147,13 +148,33 @@
   detailsForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     detailsError.classList.add('hidden');
+
+    const nameVal = document.getElementById('name').value.trim();
+    const emailVal = document.getElementById('email').value.trim();
+    const phoneDigits = document.getElementById('whatsapp').value.replace(/\D/g, '');
+
+    // Validación amable en el navegador — NO los sacamos del flujo, solo avisamos.
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(emailVal);
+    if (!emailOk) {
+      detailsError.textContent = "Revisa tu correo — parece que está incompleto o tiene un error (algo después del @).";
+      detailsError.classList.remove('hidden');
+      document.getElementById('email').focus();
+      return;
+    }
+    if (phoneDigits.length < 10 || phoneDigits.length > 13) {
+      detailsError.textContent = "Revisa tu número de WhatsApp — debe tener 10 dígitos (solo números).";
+      detailsError.classList.remove('hidden');
+      document.getElementById('whatsapp').focus();
+      return;
+    }
+
     detailsSubmit.disabled = true;
     detailsLabel.textContent = "Preparando pago…";
 
     buyerDetails = {
-      name: document.getElementById('name').value.trim(),
-      email: document.getElementById('email').value.trim(),
-      phone: document.getElementById('whatsapp').value.trim(),
+      name: nameVal,
+      email: emailVal,
+      phone: phoneDigits,
       amount: PROMO_AMOUNT,
       promo: PROMO_LABEL,
     };
