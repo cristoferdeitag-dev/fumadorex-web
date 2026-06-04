@@ -134,7 +134,7 @@
         // Si falla el lookup, fallback a lo que dice Stripe en el query param
         if (redirectStatus === 'succeeded') {
           showState('success');
-          trackPurchase(350000); // assume Hot Sale por defecto
+          trackPurchase(350000); // assume promo Mitad de Año ($3,500) por defecto
         } else {
           showState('processing');
         }
