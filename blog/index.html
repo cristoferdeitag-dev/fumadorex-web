@@ -18,6 +18,31 @@
 .blog-section-title::after{content:'';display:block;width:60px;height:3px;background:linear-gradient(90deg,#00d4aa,#00b4d8);margin:8px auto 0;border-radius:2px}
 @media(max-width:700px){.blog-grid{grid-template-columns:1fr;gap:1.5rem}}
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2139217610166163');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2139217610166163&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<script>
+document.addEventListener('click', function(ev) {
+  var a = ev.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
+  if (a && typeof fbq === 'function') {
+    try { fbq('track', 'Lead', { content_name: 'WhatsApp Click', source_url: location.pathname }); } catch(e) {}
+  }
+}, true);
+</script>
 </head> <body data-astro-cid-ybkoznf3> <!-- NAV --> <header class="nav" data-astro-cid-ybkoznf3> <div class="nav-inner" data-astro-cid-ybkoznf3> <a href="/" class="nav-logo" data-astro-cid-ybkoznf3> <img src="/imgs/logo.jpeg" alt="Fumadorex" data-astro-cid-ybkoznf3> </a> <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" data-astro-cid-ybkoznf3> <span data-astro-cid-ybkoznf3></span><span data-astro-cid-ybkoznf3></span><span data-astro-cid-ybkoznf3></span> </div> <ul class="nav-links" data-astro-cid-ybkoznf3> <li data-astro-cid-ybkoznf3><a href="/" data-astro-cid-ybkoznf3>Inicio</a></li> <li data-astro-cid-ybkoznf3><a href="/#metodologia" data-astro-cid-ybkoznf3>Metodolog&iacute;a</a></li> <li data-astro-cid-ybkoznf3><a href="/#testimonios" data-astro-cid-ybkoznf3>Testimonios</a></li> <li data-astro-cid-ybkoznf3><a href="/#precio" data-astro-cid-ybkoznf3>Precio</a></li> <li data-astro-cid-ybkoznf3><a href="/blog/" style="color:var(--cyan)" data-astro-cid-ybkoznf3>Blog</a></li> <li data-astro-cid-ybkoznf3><a href="https://wa.me/523343717956" class="nav-contact" data-astro-cid-ybkoznf3>Contacto</a></li> </ul> </div> </header> <!-- BLOG HERO --> <section class="blog-hero" data-astro-cid-ybkoznf3> <div class="section-label" data-astro-cid-ybkoznf3>Blog Fumadorex</div> <h1 data-astro-cid-ybkoznf3>Art&iacute;culos para dejar de fumar</h1> <p data-astro-cid-ybkoznf3>Consejos, historias y ciencia detr&aacute;s de nuestro m&eacute;todo psicol&oacute;gico. 24 art&iacute;culos para ayudarte.</p> </section>
 
 <!-- NUEVOS ARTÍCULOS 2026 -->
