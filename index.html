@@ -176,6 +176,11 @@ tailwind.config = {
     var a = e.target.closest && e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
     if (a && typeof gtag === 'function') gtag('event', 'conversion', {'send_to': 'AW-18323804513/gGKWCI3XuNAcEOGivKFE'});
   }, true);
+  // Conversion: clic a Amazon (delegado, cubre a.co y amazon.com.mx)
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href*="amazon.com.mx"], a[href*="a.co/"]');
+    if (a && typeof gtag === 'function') gtag('event', 'conversion', {'send_to': 'AW-18323804513/2EXPCJ6evNAcEOGivKFE'});
+  }, true);
 </script>
 </head>
 <body class="bg-background text-on-surface">
