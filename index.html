@@ -180,77 +180,6 @@ tailwind.config = {
 </head>
 <body class="bg-background text-on-surface">
 
-<!-- Si ya vio el splash en esta sesión, lo oculta antes de renderizar -->
-<script>
-  (function() {
-    try {
-      if (sessionStorage.getItem('fumadorex_splash_seen')) {
-        document.documentElement.setAttribute('data-splash-seen', 'true');
-      }
-    } catch (e) {}
-  })();
-</script>
-<style>
-  [data-splash-seen] #splash { display: none !important; }
-</style>
-
-<!-- TELÓN / SPLASH SCREEN — circulo cubre toda la pantalla tipo cortina -->
-<div id="splash" onclick="openCurtain()" style="
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 9999;
-  background: #ffffff;
-  cursor: pointer;
-  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-">
-  <img src="/splash.png" alt="Fumadorex" style="width: min(420px, 55vmin); height: min(420px, 55vmin); object-fit: contain; user-select: none; pointer-events: none;" />
-  <div style="position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%); color: #fff; font-weight: 700; font-size: clamp(0.85rem, 2vw, 1rem); letter-spacing: 0.15em; text-transform: uppercase; background: #29B6F6; padding: 10px 22px; border-radius: 999px; box-shadow: 0 4px 12px rgba(41,182,246,0.3); animation: bounce 1.8s ease-in-out infinite; pointer-events: none;">
-    ↓ Toca para entrar ↓
-  </div>
-</div>
-
-<style>
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(8px); }
-  }
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.03); }
-  }
-  .curtain-open {
-    transform: translateY(-100vh) !important;
-  }
-</style>
-
-<script>
-  function openCurtain() {
-    document.getElementById('splash').classList.add('curtain-open');
-    try { sessionStorage.setItem('fumadorex_splash_seen', '1'); } catch (e) {}
-    setTimeout(() => {
-      document.getElementById('splash').style.display = 'none';
-    }, 900);
-  }
-  // Also open on scroll
-  window.addEventListener('wheel', function handler() {
-    openCurtain();
-    window.removeEventListener('wheel', handler);
-  });
-  window.addEventListener('touchmove', function handler() {
-    openCurtain();
-    window.removeEventListener('touchmove', handler);
-  });
-</script>
 
 <!-- Glassmorphism Navbar -->
 <header class="fixed top-0 w-full z-50 glass-nav shadow-sm">
@@ -297,6 +226,15 @@ tailwind.config = {
 
 <main class="pt-20">
 
+  <!-- ==================== FRANJA WEBINAR (clase gratuita 25-jul) ==================== -->
+  <a href="https://wa.me/523343737956?text=Hola%2C%20quiero%20reservar%20mi%20lugar%20en%20la%20clase%20gratuita%20del%20s%C3%A1bado%2025%20de%20julio"
+     class="block bg-[#29B6F6] hover:bg-[#1DA5E8] transition-colors text-white text-center px-4 py-3">
+    <span class="text-sm md:text-base font-bold">
+      🎓 Clase GRATUITA: cómo dejar de fumar sin fuerza de voluntad — sábado 25 de julio, 11:00 AM ·
+      <span class="underline underline-offset-4 whitespace-nowrap">Reserva tu lugar por WhatsApp →</span>
+    </span>
+  </a>
+
   <!-- ==================== HERO ==================== -->
   <section class="relative px-6 pt-16 pb-28 md:pt-24 md:pb-36 overflow-hidden">
     <!-- Background gradient -->
@@ -331,15 +269,15 @@ tailwind.config = {
         <!-- Contadores animados -->
         <div class="grid grid-cols-3 gap-6 mt-10 pt-8 border-t border-outline-variant/20 fade-in-up-delay-3">
           <div class="text-center lg:text-left">
-            <p class="text-3xl md:text-4xl font-extrabold text-primary-fixed-dim font-headline"><span class="counter" data-target="41">0</span></p>
+            <p class="text-3xl md:text-4xl font-extrabold text-primary-fixed-dim font-headline"><span class="counter" data-target="41">41</span></p>
             <p class="text-xs font-semibold text-outline uppercase tracking-wider mt-1">Años de experiencia</p>
           </div>
           <div class="text-center">
-            <p class="text-3xl md:text-4xl font-extrabold text-primary-fixed-dim font-headline">+<span class="counter" data-target="3500">0</span></p>
+            <p class="text-3xl md:text-4xl font-extrabold text-primary-fixed-dim font-headline">+<span class="counter" data-target="3500">3,500</span></p>
             <p class="text-xs font-semibold text-outline uppercase tracking-wider mt-1">Felices exfumadores</p>
           </div>
           <div class="text-center lg:text-right">
-            <p class="text-3xl md:text-4xl font-extrabold text-primary-fixed-dim font-headline"><span class="counter" data-target="95">0</span>%</p>
+            <p class="text-3xl md:text-4xl font-extrabold text-primary-fixed-dim font-headline"><span class="counter" data-target="95">95</span>%</p>
             <p class="text-xs font-semibold text-outline uppercase tracking-wider mt-1">De eficacia</p>
           </div>
         </div>
@@ -357,7 +295,7 @@ tailwind.config = {
               <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
             </div>
             <div>
-              <p class="text-2xl font-extrabold text-on-surface font-headline">+10,000</p>
+              <p class="text-2xl font-extrabold text-on-surface font-headline">+3,500</p>
               <p class="text-xs text-on-surface-variant">vidas transformadas</p>
             </div>
           </div>
@@ -728,7 +666,7 @@ tailwind.config = {
       <div class="bg-[#E1F5FE] rounded-2xl p-6 mb-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10 text-center">
         <div>
           <p class="text-sm text-on-surface-variant">Un fumador gasta en promedio</p>
-          <p class="text-2xl font-extrabold text-red-400 font-headline">$16,000 <span class="text-sm font-semibold text-on-surface-variant">al año</span></p>
+          <p class="text-2xl font-extrabold text-red-400 font-headline">$36,000 <span class="text-sm font-semibold text-on-surface-variant">al año</span></p>
         </div>
         <span class="material-symbols-outlined text-outline-variant text-2xl rotate-90 sm:rotate-0">trending_flat</span>
         <div>
@@ -738,7 +676,7 @@ tailwind.config = {
         <div class="hidden sm:block w-px h-12 bg-outline-variant/30"></div>
         <div>
           <p class="text-xs text-on-surface-variant mb-1">Tu salud no tiene precio, pero además...</p>
-          <p class="text-sm font-semibold text-[#2E7D32]">Ahorras +$9,000 <br/>desde el primer año</p>
+          <p class="text-sm font-semibold text-[#2E7D32]">Ahorras +$29,000 <br/>desde el primer año</p>
         </div>
       </div>
 
@@ -1263,7 +1201,8 @@ tailwind.config = {
     }
   });
 
-  // Animated counters — trigger when splash opens
+  // Animated counters — arrancan al cargar (los valores reales ya están en el
+  // markup, así que sin JS la página nunca muestra ceros)
   let countersStarted = false;
   function animateCounters() {
     if (countersStarted) return;
@@ -1284,14 +1223,8 @@ tailwind.config = {
       requestAnimationFrame(update);
     });
   }
-  // Start counters 1s after splash opens
-  const origOpenCurtain = window.openCurtain;
-  window.openCurtain = function() {
-    origOpenCurtain();
-    setTimeout(animateCounters, 1000);
-  };
-  // Fallback: if no splash, start after 2s
-  setTimeout(() => { if (!countersStarted) animateCounters(); }, 2000);
+  // Arranque: en cuanto carga la página (pequeña pausa para que se vea la animación)
+  setTimeout(animateCounters, 600);
 
   // Logo carousel
   (function() {
