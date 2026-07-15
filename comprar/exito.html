@@ -16,6 +16,22 @@
   .spinner { animation: spin 1s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 </style>
+
+<!-- Google tag (gtag.js) — Google Ads Fumadorex -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18323804513"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18323804513');
+</script>
+<script>
+  // Conversion: clic a WhatsApp (delegado, cubre todos los links wa.me)
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
+    if (a && typeof gtag === 'function') gtag('event', 'conversion', {'send_to': 'AW-18323804513/gGKWCI3XuNAcEOGivKFE'});
+  }, true);
+</script>
 </head>
 <body class="bg-slate-50 min-h-screen flex items-center">
   <main class="max-w-md mx-auto p-6 text-center" id="root">
@@ -88,6 +104,9 @@
   }
 
   function trackPurchase(amountCents) {
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', { 'send_to': 'AW-18323804513/YUZXCIrXuNAcEOGivKFE', 'value': amountCents / 100, 'currency': 'MXN' });
+    }
     if (typeof fbq === 'function') {
       fbq('track', 'Purchase', { value: amountCents / 100, currency: 'MXN' });
     }
