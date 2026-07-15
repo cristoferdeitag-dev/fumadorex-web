@@ -561,13 +561,16 @@ tailwind.config = {
   <section id="testimonios" class="py-24 px-6 bg-surface-container-low rounded-t-[3rem] overflow-hidden">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-20">
-        <span class="text-primary-fixed-dim font-bold tracking-widest uppercase text-xs">Historias reales</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-secondary mt-3">Testimonios Reales</h2>
+        <span class="text-primary-fixed-dim font-bold tracking-widest uppercase text-xs">Testimonios</span>
+        <h2 class="text-3xl md:text-4xl font-bold text-secondary mt-3">Ellos ya lo lograron</h2>
+        <p class="text-on-surface-variant mt-4 max-w-xl mx-auto">Miles de personas han dejado de fumar con el método Fumadorex. Estas son sus historias.</p>
       </div>
 
       <!-- Carousel -->
       <div class="relative max-w-5xl mx-auto">
         <div id="testi-carousel" class="flex items-end justify-center gap-4 md:gap-6" style="min-height: 440px; perspective: 1000px;"></div>
+        <button onclick="testiPrev()" aria-label="Testimonio anterior" class="hidden md:flex items-center justify-center absolute -left-2 lg:-left-8 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-md text-on-surface-variant hover:text-primary-fixed-dim hover:shadow-lg active:scale-95 transition-all z-20"><span class="material-symbols-outlined">chevron_left</span></button>
+        <button onclick="testiNext()" aria-label="Testimonio siguiente" class="hidden md:flex items-center justify-center absolute -right-2 lg:-right-8 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white shadow-md text-on-surface-variant hover:text-primary-fixed-dim hover:shadow-lg active:scale-95 transition-all z-20"><span class="material-symbols-outlined">chevron_right</span></button>
         <!-- Dots -->
         <div id="testi-dots" class="flex justify-center gap-2 mt-10"></div>
         <!-- CTA -->
@@ -587,7 +590,8 @@ tailwind.config = {
     .testi-avatar-circle {
       width: 72px; height: 72px;
       border-radius: 50%;
-      border: 3px solid #4FC3F7;
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px rgba(79,195,247,.65), 0 8px 20px rgba(2,136,209,.18);
       object-fit: cover;
       position: absolute;
       top: -36px;
@@ -599,7 +603,8 @@ tailwind.config = {
     .testi-avatar-placeholder {
       width: 72px; height: 72px;
       border-radius: 50%;
-      border: 3px solid #4FC3F7;
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px rgba(79,195,247,.65), 0 8px 20px rgba(2,136,209,.18);
       position: absolute;
       top: -36px;
       left: 50%;
@@ -642,21 +647,22 @@ tailwind.config = {
 
       if (isCenter) {
         return '<div class="testi-card-wrap ' + cls + ' flex-shrink-0 w-[320px] md:w-[380px] relative pt-10">'
-          + '<div class="bg-white rounded-3xl shadow-xl p-10 pt-14 text-center relative" style="min-height: 340px;">'
+          + '<div class="bg-white rounded-3xl p-10 pt-14 text-center relative border border-[#E3F2FD]" style="min-height: 340px; box-shadow: 0 24px 48px -16px rgba(2,136,209,.16), 0 4px 12px rgba(0,0,0,.04);">'
           + avatar
-          + '<p class="font-bold text-on-surface text-lg mb-1">' + t.name + '</p>'
-          + '<p class="text-xs text-primary-fixed-dim mb-3">' + t.meta + '</p>'
+          + '<span class="material-symbols-outlined absolute top-5 left-5 text-[#E1F5FE] text-5xl select-none" style="font-variation-settings: \'FILL\' 1;" aria-hidden="true">format_quote</span>'
+          + '<p class="font-bold text-on-surface text-lg mb-2">' + t.name + '</p>'
+          + '<span class="inline-block bg-[#E1F5FE] text-[#0288D1] text-xs font-semibold rounded-full px-3 py-1 mb-3">' + t.meta + '</span>'
           + stars
-          + '<p class="italic text-on-surface-variant leading-relaxed text-base">"' + t.quote + '"</p>'
+          + '<p class="italic text-on-surface leading-relaxed text-[17px]">\u201C' + t.quote + '\u201D</p>'
           + '</div></div>';
       } else {
         return '<div class="testi-card-wrap ' + cls + ' flex-shrink-0 w-[240px] md:w-[280px] relative pt-10 hidden md:block">'
-          + '<div class="bg-white rounded-2xl shadow-md p-8 pt-14 text-center relative" style="min-height: 280px;">'
+          + '<div class="bg-white rounded-2xl shadow-md p-8 pt-14 text-center relative border border-[#F0F7FC]" style="min-height: 280px;">'
           + avatar
-          + '<p class="font-bold text-on-surface text-sm mb-1">' + t.name + '</p>'
-          + '<p class="text-xs text-primary-fixed-dim mb-2">' + t.meta + '</p>'
+          + '<p class="font-bold text-on-surface text-sm mb-1.5">' + t.name + '</p>'
+          + '<span class="inline-block bg-[#E1F5FE] text-[#0288D1] text-[11px] font-semibold rounded-full px-2.5 py-0.5 mb-2">' + t.meta + '</span>'
           + stars
-          + '<p class="italic text-on-surface-variant leading-relaxed text-sm line-clamp-3">"' + t.quote.substring(0, 90) + '..."</p>'
+          + '<p class="italic text-on-surface-variant leading-relaxed text-sm line-clamp-3">\u201C' + t.quote.substring(0, 90) + '...\u201D</p>'
           + '</div></div>';
       }
     }
@@ -722,13 +728,13 @@ tailwind.config = {
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
 
-        <!-- Card 1: 25 mayo — NO DISPONIBLE (fecha pasada) -->
+        <!-- Card 1: 20 julio — AGOTADO -->
         <div class="bg-surface-container-lowest rounded-3xl overflow-hidden ambient-shadow relative opacity-60">
-          <div class="bg-surface-container-high text-on-surface-variant text-center py-2 text-xs font-bold uppercase tracking-wider">No disponible</div>
+          <div class="bg-surface-container-high text-on-surface-variant text-center py-2 text-xs font-bold uppercase tracking-wider">Agotado</div>
           <div class="p-8 text-center">
-            <p class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider mb-3">25 Mayo 2026</p>
-            <p class="text-4xl font-extrabold text-on-surface-variant font-headline line-through">$6,999</p>
-            <p class="text-xs text-on-surface-variant mt-1">Curso cerrado</p>
+            <p class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider mb-3">20 Julio 2026</p>
+            <p class="text-4xl font-extrabold text-on-surface-variant font-headline line-through">$3,500</p>
+            <p class="text-xs text-on-surface-variant mt-1">Cupo agotado</p>
             <div class="mt-6 space-y-2 text-left">
               <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Planes de financiamiento</div>
               <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Acceso a plataforma digital</div>
@@ -743,11 +749,32 @@ tailwind.config = {
           </div>
         </div>
 
-        <!-- Card 2: 25 junio -->
+        <!-- Card 3: Mitad de Año, Mitad de Precio -->
+        <div class="bg-surface-container-lowest rounded-3xl overflow-hidden ambient-shadow relative">
+          <div class="bg-gradient-to-r from-[#FF6A00] to-[#E53935] text-white text-center py-2 text-xs font-bold uppercase tracking-wider">🔥 Mitad de Año · Mitad de Precio</div>
+          <div class="p-8 text-center">
+            <p class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider mb-3">14 Agosto 2026</p>
+            <div class="mb-1"><span class="text-sm text-outline line-through">$6,999</span></div>
+            <p class="text-4xl font-extrabold text-[#E53935] font-headline">$3,500</p>
+            <p class="text-xs text-on-surface-variant mt-1">Un solo pago directo en la página</p>
+            <div class="mt-6 space-y-2 text-left">
+              <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Acceso a plataforma digital</div>
+              <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Kit de trabajo gratis</div>
+              <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Asesoría personalizada</div>
+              <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Charlas grupales</div>
+              <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Garantía de reembolso 100%</div>
+            </div>
+            <a href="/comprar.html" class="block w-full mt-8 py-3.5 bg-gradient-to-r from-[#FF6A00] to-[#E53935] text-white font-bold rounded-full text-center hover:opacity-95 active:scale-95 transition-all duration-200 shadow-md">
+              Comprar ahora
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: 15 septiembre — disponible (Amazon MSI + pago único chico) -->
         <div class="bg-surface-container-lowest rounded-3xl overflow-hidden ambient-shadow">
           <div class="bg-surface-container-high text-on-surface-variant text-center py-2 text-xs font-semibold uppercase tracking-wider">Disponible</div>
           <div class="p-8 text-center">
-            <p class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider mb-3">25 Junio 2026</p>
+            <p class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider mb-3">15 Septiembre 2026</p>
             <p class="text-4xl font-extrabold text-secondary font-headline">$6,999</p>
             <p class="text-xs text-on-surface-variant mt-1">o hasta 15 MSI · ~$467/mes en Amazon</p>
             <div class="mt-6 space-y-2 text-left">
@@ -760,28 +787,6 @@ tailwind.config = {
             </div>
             <a href="https://www.amazon.com.mx/dp/B0DF12DRBM" target="_blank" class="block w-full mt-8 py-3.5 bg-surface-container-highest text-on-surface font-bold rounded-full text-center hover:bg-surface-container-high active:scale-95 transition-all duration-200">
               Comprar en Amazon
-            </a>
-          </div>
-        </div>
-
-        <!-- Card 3: Mitad de Año, Mitad de Precio -->
-        <div class="bg-surface-container-lowest rounded-3xl overflow-hidden ambient-shadow relative">
-          <div class="bg-gradient-to-r from-[#FF6A00] to-[#E53935] text-white text-center py-2 text-xs font-bold uppercase tracking-wider">🔥 Mitad de Año · Mitad de Precio</div>
-          <div class="p-8 text-center">
-            <p class="text-sm font-semibold text-on-surface-variant uppercase tracking-wider mb-3">20 Julio 2026</p>
-            <div class="mb-1"><span class="text-sm text-outline line-through">$6,999</span></div>
-            <p class="text-4xl font-extrabold text-[#E53935] font-headline">$3,500</p>
-            <p class="text-xs text-on-surface-variant mt-1">Un solo pago directo en la página</p>
-            <div class="mt-6 space-y-2 text-left">
-              <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Planes de financiamiento</div>
-              <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Acceso a plataforma digital</div>
-              <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Kit de trabajo gratis</div>
-              <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Asesoría personalizada</div>
-              <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Charlas grupales</div>
-              <div class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-fixed-dim text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span> Garantía de reembolso 100%</div>
-            </div>
-            <a href="/comprar.html" class="block w-full mt-8 py-3.5 bg-gradient-to-r from-[#FF6A00] to-[#E53935] text-white font-bold rounded-full text-center hover:opacity-95 active:scale-95 transition-all duration-200 shadow-md">
-              Comprar ahora
             </a>
           </div>
         </div>
