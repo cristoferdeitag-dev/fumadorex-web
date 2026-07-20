@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Comprar Programa Fumadorex — $3,500 MXN · Mitad de Año, Mitad de Precio</title>
-<meta name="description" content="Reserva tu lugar en el programa Fumadorex con la promo Mitad de Año, Mitad de Precio. Método psicológico, 95% de efectividad, garantía de reembolso 100%."/>
+<meta name="description" content="Reserva tu lugar en el programa Fumadorex con la promo Mitad de Año, Mitad de Precio. Método psicológico, garantía de reembolso 100%. Paga con tarjeta, meses sin intereses o en OXXO."/>
 <link rel="canonical" href="https://fumadorex.com.mx/comprar.html"/>
 <link rel="icon" href="https://fumadorex.com.mx/imgs/fumadorex.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
@@ -77,7 +77,7 @@ document.addEventListener('click', function(ev) {
     <span class="inline-block bg-gradient-to-r from-[#FF6A00] to-[#E53935] text-white text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full">🔥 Mitad de Año, Mitad de Precio · pago directo</span>
     <h1 class="heading text-3xl sm:text-4xl font-bold mt-4 leading-tight">Reserva tu lugar en Fumadorex.</h1>
     <p class="text-slate-600 mt-3 text-base sm:text-lg max-w-xl">
-      Método psicológico (Gestalt + Humanismo + Conductismo). 41 años de trayectoria, 95% de efectividad, y <strong>garantía de reembolso al 100%</strong> si terminas el programa y sigues fumando.
+      Método psicológico (Gestalt + Humanismo + Conductismo). 41 años de trayectoria y <strong>garantía de reembolso al 100%</strong> si terminas el programa y sigues fumando.
     </p>
 
     <ul class="mt-8 space-y-3 text-sm sm:text-base text-slate-700">
@@ -135,7 +135,7 @@ document.addEventListener('click', function(ev) {
 
         <p id="details-error" class="text-sm text-red-600 hidden"></p>
 
-        <p class="text-[11px] text-slate-500 text-center">Pago procesado por Stripe (PCI-DSS Nivel 1). Aceptamos tarjeta de crédito/débito y <strong>pago en efectivo en OXXO</strong>.</p>
+        <p class="text-[11px] text-slate-500 text-center">Pago procesado por Stripe (PCI-DSS Nivel 1). Aceptamos tarjeta de crédito/débito (con opción a <strong>meses sin intereses</strong> en bancos participantes) y <strong>pago en efectivo en OXXO</strong>.</p>
       </form>
 
       <!-- Step 2: Stripe Payment Element (hidden until step 1 completes) -->
@@ -244,7 +244,16 @@ document.addEventListener('click', function(ev) {
           }
         }
       });
-      const paymentElement = elements.create('payment');
+      // Prefill: que Stripe no vuelva a pedir nombre/correo que ya dio en el paso 1
+      const paymentElement = elements.create('payment', {
+        defaultValues: {
+          billingDetails: {
+            name: buyerDetails.name,
+            email: buyerDetails.email,
+            phone: buyerDetails.phone,
+          }
+        }
+      });
       paymentElement.mount('#payment-element');
 
       // Hide step 1, show step 2

@@ -66,6 +66,9 @@ $post_fields = [
     'payment_method_types[0]' => 'card',
     'payment_method_types[1]' => 'oxxo',
     'payment_method_options[oxxo][expires_after_days]' => '2',
+    // MSI: con tarjetas de crédito MX participantes, el Payment Element
+    // muestra los planes disponibles al teclear la tarjeta.
+    'payment_method_options[card][installments][enabled]' => 'true',
 ];
 
 $ch = curl_init('https://api.stripe.com/v1/payment_intents');
