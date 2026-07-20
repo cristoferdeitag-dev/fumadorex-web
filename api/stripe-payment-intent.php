@@ -60,7 +60,12 @@ $post_fields = [
     'metadata[source]' => 'fumadorex.com.mx landing inline',
     'metadata[promo]' => $promo,
     'metadata[curso_fecha]' => '2026-07-25',
-    'automatic_payment_methods[enabled]' => 'true',
+    // Métodos explícitos: la config del dashboard solo trae card+link aunque
+    // la capability de OXXO está activa — forzarlos aquí los habilita sin
+    // tocar el dashboard. La ficha OXXO expira en 2 días.
+    'payment_method_types[0]' => 'card',
+    'payment_method_types[1]' => 'oxxo',
+    'payment_method_options[oxxo][expires_after_days]' => '2',
 ];
 
 $ch = curl_init('https://api.stripe.com/v1/payment_intents');
