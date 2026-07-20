@@ -46,6 +46,7 @@ jobs:
               --exclude='node_modules' \
               --exclude='.env' \
               --exclude='.env.production' \
+              --exclude='BITACORA.md' \
               -e "ssh -p 65002 -o StrictHostKeyChecking=no -o ConnectTimeout=30" \
               ./ u781187371@195.35.35.27:/home/u781187371/domains/fumadorex.com.mx/public_html/ && break
             n=$((n+1))
